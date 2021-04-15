@@ -1,12 +1,12 @@
 defmodule GitRepoApi.GitRepo.GetRepoUser do
   use Tesla
 
-  plug Tesla.Middleware.BaseUrl, "https://api.github.com/users/"
+  @base_url "https://api.github.com/users/"
   plug Tesla.Middleware.Headers, [{"User-Agent", "GitUserRepo"}]
   plug Tesla.Middleware.JSON
 
-  def get_repo_user(id) do
-    "#{id}/repos"
+  def get_repo_user(url \\ @base_url, id) do
+    "#{url}#{id}/repos"
     |> get()
     |> handle_result()
   end
