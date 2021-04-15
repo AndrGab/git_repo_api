@@ -5,8 +5,8 @@ defmodule GitRepoApiWeb.FallbackController do
 
   def call(conn, {:error, result}) do
     conn
-    |> put_status(:bad_request)
+    |> put_status(result)
     |> put_view(ErrorView)
-    |> render("error.json", %{result: result})
+    |> render("error.json", %{result: "Invalid User"})
   end
 end

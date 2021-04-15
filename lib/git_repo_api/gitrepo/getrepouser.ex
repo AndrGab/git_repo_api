@@ -29,7 +29,7 @@ defmodule GitRepoApi.GitRepo.GetRepoUser do
 
       {:ok, result}
     else
-      _ -> {:error, "Invalid USer"}
+      erro -> {:error, erro}
     end
   end
 end
