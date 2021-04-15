@@ -1,6 +1,6 @@
 # GitRepoApi
 
-# 💻 Sobre o desafio
+# 💻  Desafio: Consumindo APIs
 
 Nesse desafio, você deverá criar uma aplicação que consome a API do GitHub retornando a lista de repositórios de um usuário informado.
 A rota para obter esse dado da API é `[https://api.github.com/users/danilo-vieira/repos](https://api.github.com/users/danilo-vieira/repos)` onde **danilo-vieira** deverá ser o nome do usuário que está solicitando a lista de repositórios, ou seja, esse dado deve ser dinâmico.
@@ -18,3 +18,11 @@ Para cada repositório de um usuário, você deve retornar apenas os seguintes c
 ## Rotas
 
 A aplicação deverá possuir apenas uma rota que recebe o `username` do usuário e retorna os dados obtidos com status `200`.
+
+
+
+# 💻 Desafio: Testando requisições com bypass 
+
+Nesse desafio, você deverá testar o cliente criado no desafio anterior usando a lib bypass (link: [https://github.com/PSPDFKit-labs/bypass](https://github.com/PSPDFKit-labs/bypass)) aplicando tudo que aprendeu até agora!
+
+Sinta-se livre para melhorar ainda mais a sua aplicação adicionando features se desejar e adicionando testes para essas novas features.
