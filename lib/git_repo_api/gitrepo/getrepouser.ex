@@ -1,6 +1,8 @@
 defmodule GitRepoApi.GitRepo.GetRepoUser do
   use Tesla
 
+  alias GitRepoApi.Error
+
   @base_url "https://api.github.com/users/"
   plug Tesla.Middleware.Headers, [{"User-Agent", "GitUserRepo"}]
   plug Tesla.Middleware.JSON
@@ -29,7 +31,7 @@ defmodule GitRepoApi.GitRepo.GetRepoUser do
 
       {:ok, result}
     else
-      erro -> {:error, erro}
+      erro -> {:error, %Error{status: erro, result: erro}}
     end
   end
 end

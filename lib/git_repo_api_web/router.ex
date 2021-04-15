@@ -1,14 +1,37 @@
 defmodule GitRepoApiWeb.Router do
   use GitRepoApiWeb, :router
 
+  alias GitRepoApiWeb.Plugs.UUIDChecker
+
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  pipeline :uuidcheck do
+    plug UUIDChecker
+  end
+
+  pipeline :auth do
+    plug GitRepoApiWeb.Auth.Pipeline
+  end
+
+  scope "/api", GitRepoApiWeb do
+    pipe_through [:api, :uuidcheck, :auth]
+
+    resources "/users", UsersController, except: [:new, :edit, :index, :create]
+  end
+
+  scope "/api", GitRepoApiWeb do
+    pipe_through [:api, :auth]
+
+    get "/github/:id", GetRepoController, :index
   end
 
   scope "/api", GitRepoApiWeb do
     pipe_through :api
 
-    get "/:id", GetRepoController, :index
+    post "/users", UsersController, :create
+    post "/users/signin", UsersController, :sign_in
   end
 
   # Enables LiveDashboard only for development
