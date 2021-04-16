@@ -53,3 +53,19 @@ Ao chamar a rota que lista os repositórios de um usuário, será necessário en
 ---
 
 Para enviar o desafio, você pode implementar a feature no mesmo repositório do desafio **Consumindo APIs** e enviar o link com o código atualizado sem a necessidade de criar um novo repositório.
+
+# 💻 Desafio: Token Refrese
+
+Continuando com o código implementado no desafio Autenticação JWT, você deverá customizar o tempo de validade de um token para um minuto e renovar ele a cada requisição feita desde que ainda esteja válido.
+
+1 - Para alterar a duração do token, veja a opção `:ttl` na documentação oficial da função `encode_and_sign/4`: [https://hexdocs.pm/guardian/Guardian.html#encode_and_sign/4](https://hexdocs.pm/guardian/Guardian.html#encode_and_sign/4)
+
+2 - Para renovar um token, confira a documentação da função `refresh/3`:
+   [https://hexdocs.pm/guardian/Guardian.Token.Jwt.html#refresh/3](https://hexdocs.pm/guardian/Guardian.Token.Jwt.html#refresh/3)
+
+Exemplo:
+
+```elixir
+# Refresh a token before it expires
+{:ok, _old_stuff, {new_token, new_claims}} = MyApp.Guardian.refresh(token)
+```

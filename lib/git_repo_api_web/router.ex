@@ -1,6 +1,7 @@
 defmodule GitRepoApiWeb.Router do
   use GitRepoApiWeb, :router
 
+  alias GitRepoApiWeb.Plugs.RefreshToken
   alias GitRepoApiWeb.Plugs.UUIDChecker
 
   pipeline :api do
@@ -12,6 +13,7 @@ defmodule GitRepoApiWeb.Router do
   end
 
   pipeline :auth do
+    plug RefreshToken
     plug GitRepoApiWeb.Auth.Pipeline
   end
 
